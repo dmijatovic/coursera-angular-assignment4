@@ -1,0 +1,24 @@
+{
+  "name": "coursera-angular-assignment1",
+  "version": "1.0.0",
+  "description": "coursera angular course",
+  "main": "index.html",
+  "scripts": {
+    "start":"browser-sync start -s --port 8080 --startPath solution -f ./solution/**/*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmijatovic/coursera-angular-assignment2.git"
+  },
+  "keywords": [
+    "coursera",
+    "webdev",
+    "course"
+  ],
+  "author": "Dusan Mijatoic",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.1"
+  }
+}

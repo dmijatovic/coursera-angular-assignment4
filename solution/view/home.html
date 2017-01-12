@@ -1,0 +1,14 @@
+<h2>Welcome to HOME page</h2>
+<section>
+    <!--TAB NAVIGATION-->
+    <nav data-ng-repeat="item in $ctrl.tabData">
+        <button ui-sref="home.tab({$index})" ui-sref-active="active-tab">item.label</button>
+        <!--
+        <button ui-sref="home.tab({})" ui-sref-active="active-tab">Tab1</button>
+        <button ui-sref="home.tab2" ui-sref-active="active-tab">Tab2</button>
+        <button ui-sref="home.tab3" ui-sref-active="active-tab">Tab3</button>
+        -->
+    </nav>
+    <!--CONTENT GOES HERE-->
+    <ui-view></ui-view>
+</section>

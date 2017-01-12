@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular starter</title>
+</head>
+<body data-ng-app="dv4app">
+<!-- HEADER -->
+<head>
+    <h1>UI router sample</h1>
+    <dv4-main-nav>
+        <!--<a ui-sref="home">Home</a>
+        <a ui-sref="about">About</a>
+        <a ui-sref="page3">Page 3</a>-->
+    </dv4-main-nav>
+</head>
+<!-- BODY VIEWER UI-VIEW -->
+<ui-view></ui-view>
+
+<!-- FOOTER -->
+<footer>
+    This is the footer 
+</footer>
+
+<!-- ANGULAR -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js" 
+        integrity="sha256-jUHgsHoPXAh7OyogDZWIrwTF8PXRiRg+mdxod+c295k=" 
+        crossorigin="anonymous">
+</script>
+<!-- APP -->
+<script src="js/routes.js"></script>
+<script src="js/app.js"></script>
+<script src="js/components.js"></script>
+</body>
+</html>
