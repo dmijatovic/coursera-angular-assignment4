@@ -8,7 +8,7 @@
 //create app
 let dv4app = angular.module("dv4app",[
     //dependecies
-    'ui.router'
+    'ui.router','data'
 ]);
 
 //UI-ROUTER configuration
@@ -19,22 +19,30 @@ routerCfg.$inject = ['$stateProvider','$urlRouterProvider'];
 function routerCfg($stateProvider,$urlRouterProvider){
     //define default value 
     $urlRouterProvider.otherwise('/home');
-    //setup ui states
+    
+    /*//setup ui states
     mainRoutes.map((item)=>{
         //add states 
         $stateProvider.state(item.sref,item);
             
-    });
-    /*
+    });*/
+    
     $stateProvider
     .state('home',{
         url:'/home',
         templateUrl:'view/home.html'
     })
-    .state('about',{
-        url:'/about',
-        templateUrl:'view/about.html'
-    });*/
+    .state('categories',{
+        url:'/categories',
+        templateUrl:'view/categories.html',
+        resolve:{
+            
+        }
+    })
+    .state('categories.items',{
+
+    });
+
 }
 
 })();

@@ -4,7 +4,7 @@
   "description": "coursera angular course",
   "main": "index.html",
   "scripts": {
-    "start":"browser-sync start -s --port 8080 --startPath solution -f ./solution/**/*",
+    "start":"browser-sync start -s solution --port 8080 -f ./solution/**/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
