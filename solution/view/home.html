@@ -1,5 +1,13 @@
-<h2>Welcome to our Restaturant</h2>
-<section>
-    <a ui-sref="categories">Load</a> categories or items from the menu
-</section>
-<dv4-menu-categories>
+<div class="container">
+    <section class="left-panel">
+        <h3>Categories</h3>
+        <dv4-menu-categories
+            categories="home.categories">
+        </dv4-menu-categories>
+    </section>
+    <section class="right-panel"> 
+        <ui-view>
+            Select category on the left!
+        </ui-view>
+    </section>
+</div>

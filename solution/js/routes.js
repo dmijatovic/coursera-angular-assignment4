@@ -1,25 +1,78 @@
-//all routes defined?!?
-const mainRoutes=[
-    {label:'Home',
-        sref:'home',url:'/home',
+(function(){
+'use strict'
+//load main module reference 
+let dv4app = angular.module('dv4app');
+
+//UI-ROUTER configuration
+dv4app.config(routerCfg);
+//inject dependencies
+routerCfg.$inject = ['$stateProvider','$urlRouterProvider'];
+//define main routes function 
+function routerCfg($stateProvider,$urlRouterProvider){
+    //define default value 
+    $urlRouterProvider.otherwise('/home');
+    
+    /*//setup ui states
+    mainRoutes.map((item)=>{
+        //add states 
+        $stateProvider.state(item.sref,item);
+            
+    });*/
+    
+    $stateProvider
+    .state('home',{
+        url:'/home',
         templateUrl:'view/home.html',
-        //controller:'HomeCtrl as home'
+        controller:'HomeCtrl as home',
         resolve:{
-            //tab routings
-            tabData:()=>{
-                return [
-                    {label:'Tab 1',title:'This is tab title 1',body:'This is tab body 1'},
-                    {label:'Tab 2',title:'This is tab title 2',body:'This is tab body 2'},
-                    {label:'Tab 3',title:'This is tab title 3',body:'This is tab body 3'}
-                ]
-            }
-        }       
-    },{//home tab routing 
-        //label:'Tab',
-        sref:'home.tab',url:'/home/tab/{itemId}',
-        templateUrl:'view/home-tab.html',
-        controller:'homeTabCtrl as tab'
-    },
-    {sref:'about',url:'/about',templateUrl:'view/about.html',label:'About'},
-    {sref:'portfolio',url:'/portfolio',templateUrl:'view/portfolio.html',label:'Portfolio'}
-];
+            //get categories from API
+            categories:['MenuDataService',(dataService)=>{
+                return dataService.getAllCategories();
+            }]
+        }
+    })    
+    .state('home.category',{
+        url:'/category/{catId}',
+        resolve:{
+            items:['$stateParams','MenuDataService',(sp,data)=>{
+                return data.getItemsForCategory(sp.catId);
+            }]
+        },
+        controller:'ItemsCtrl as category',
+        template:`            
+            <h3>ShortName: {{category.title}}</h3>           
+            <dv4-category-items-list
+                items="category.items" 
+            ></dv4-category-items-list>
+        `
+    });
+
+}
+
+//-------------------------------
+// ROUTES SPECIFIC CONTROLLERS 
+dv4app
+.controller('HomeCtrl',[
+    //dependencies 
+    'categories',
+    homeCtrl
+]);
+function homeCtrl(categories){
+    let home = this;
+    home.categories = categories;
+}
+
+dv4app.controller('ItemsCtrl',[
+    //dependencies
+    '$stateParams','items',
+    ItemsCtrl
+]);
+function ItemsCtrl(sp,items){
+    let category = this;
+    //load title
+    category.title = sp.catId;
+    category.items = items;
+}
+
+
+})();

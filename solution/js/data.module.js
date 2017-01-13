@@ -1,7 +1,7 @@
 (function(){
 'use strict'
-
-let data = angular.module('data',[
+//declare data module
+angular.module('dv4data',[
     //dependencies
 ]);
 

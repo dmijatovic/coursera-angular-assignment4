@@ -8,11 +8,11 @@
 </head>
 <body data-ng-app="dv4app">
 <!-- HEADER -->
-<head>
-    <h1>Our restorant</h1>
-</head>
+<header>
+    <h2><a ui-sref="home">Welcome to our Restaturant</a></h2>
+</header>
 <!-- BODY VIEWER UI-VIEW -->
-<ui-view class="section"></ui-view>
+<ui-view class="body-section"></ui-view>
 
 <!-- FOOTER -->
 <footer>
@@ -26,11 +26,20 @@
         crossorigin="anonymous">
 </script>
 <!-- APP -->
-<script src="js/menuapp.module.js"></script>
+<!--
 <script src="js/data.module.js"></script>
+<script src="js/menudata.service.js"></script>
+-->
+<script src="js/data.module.js"></script>
+<script src="js/menuapp.module.js"></script>
+<script src="js/routes.js"></script>
 <script src="js/menudata.service.js"></script>
 <script src="js/categories.component.js"></script>
 <script src="js/items.component.js"></script>
 
+<!--
+<script src="js/categories.component.js"></script>
+<script src="js/items.component.js"></script>
+-->
 </body>
 </html>

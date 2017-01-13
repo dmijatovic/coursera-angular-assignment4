@@ -1,20 +1,18 @@
 (function(){
 'use strict'
 
+//create item component 
 angular.module('dv4app')
-.component('dv4CategoryItems',{
-    template:` 
-        <h3>List category items!</h3>
+.component('dv4CategoryItemsList',{
+    bindings:{
+        items:'<'
+    },
+    template:`
+        <h4>Category items</h4>
+        <div data-ng-repeat='item in $ctrl.items'>
+            {{item.name}}
+        </div>
     `
-    //templateUrl:'view/items.html',
-    //controller:dv4MenuCategories,
-    //controllerAs:'cat',
-    /*bindings:{
-
-    }*/
 });
-function dv4CategoryItems(){
 
-};
-
-})()
+})();
