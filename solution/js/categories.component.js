@@ -11,7 +11,7 @@ angular.module('dv4app')
     },
     template:`
         <div data-ng-repeat='item in cat.categories'>
-            <a ui-sref="home.category({catId:item.short_name})">{{item.name}}</a>
+            <a ui-sref="category.items({catId:item.short_name})">{{item.name}}</a>
         </div>
      `
 });

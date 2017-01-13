@@ -11,7 +11,7 @@ data.service('MenuDataService',[
 
 function menuDataService($http,$q){
     let menu = this;
-    //init categories 
+    //init category array for cache  
     menu.category=[];
     //get all categories 
     menu.getAllCategories = function(){
@@ -34,7 +34,7 @@ function menuDataService($http,$q){
             });
         }else{
             //send categories from cache 
-            q.resolve(menu.category);
+            q.resolve(menu.categories);
         }
         //return promise
         return q.promise;

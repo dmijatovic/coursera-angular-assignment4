@@ -22,17 +22,36 @@ function routerCfg($stateProvider,$urlRouterProvider){
     $stateProvider
     .state('home',{
         url:'/home',
-        templateUrl:'view/home.html',
+        templateUrl:'view/home.html'
+    })    
+    .state('category',{
+        url:'/category',
         controller:'HomeCtrl as home',
         resolve:{
             //get categories from API
             categories:['MenuDataService',(dataService)=>{
                 return dataService.getAllCategories();
             }]
-        }
-    })    
-    .state('home.category',{
-        url:'/category/{catId}',
+        },
+        template:`
+            <a ui-sref="home">Home</a>           
+            <div class="container">
+                <section class="left-panel">
+                    <h3>Categories</h3>
+                    <dv4-menu-categories
+                        categories="home.categories">
+                    </dv4-menu-categories>
+                </section>
+                <section class="right-panel"> 
+                    <ui-view>
+                        Select category on the left!
+                    </ui-view>
+                </section>
+            </div>
+        `
+    })
+    .state('category.items',{
+        url:'/{catId}',
         resolve:{
             items:['$stateParams','MenuDataService',(sp,data)=>{
                 return data.getItemsForCategory(sp.catId);
